@@ -54,12 +54,40 @@ function waitForEnter() {
 // Main comparison function
 async function main() {
     console.log(`
-Welcome to the JSON comparison tool. This script compares your local 'specs.json' file with a reference JSON file. The differences are displayed with the following indicators:
+
+
+
+╭━━━╮╱╱╱╱╱╱╱╱╱╱╭╮╱╭╮╱╱╱╱╭━━━━╮╱╱╭┳━━━┳━━━┳━╮╱╭╮
+┃╭━╮┃╱╱╱╱╱╱╱╱╱╱┃┃╱┃┃╱╱╱╱┃╭╮╭╮┃╱╱┃┃╭━╮┃╭━╮┃┃╰╮┃┃
+┃╰━━┳━━┳━━┳━━╮╱┃┃╱┃┣━━╮╱╰╯┃┃╰╯╱╱┃┃╰━━┫┃╱┃┃╭╮╰╯┃
+╰━━╮┃╭╮┃┃━┫╭┳┻━┫┃╱┃┃╭╮┣━━╮┃┃╱╱╭╮┃┣━━╮┃┃╱┃┃┃╰╮┃┃
+┃╰━╯┃╰╯┃┃━┫╰┻┳━┫╰━╯┃╰╯┣━━╯┃┃╱╱┃╰╯┃╰━╯┃╰━╯┃┃╱┃┃┃
+╰━━━┫╭━┻━━┻━━╯╱╰━━━┫╭━╯╱╱╱╰╯╱╱╰━━┻━━━┻━━━┻╯╱╰━╯
+╱╱╱╱┃┃╱╱╱╱╱╱╱╱╱╱╱╱╱┃┃
+╱╱╱╱╰╯╱╱╱╱╱╱╱╱╱╱╱╱╱╰╯
+╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╭╮╱╱╱╱╱╱╭╮
+╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╭╯╰╮╱╱╱╱╱┃┃
+╭━━┳━━┳╮╭┳━━┳━━┳━┳┳━━┳━━┳━╮╱╰╮╭╋━━┳━━┫┃
+┃╭━┫╭╮┃╰╯┃╭╮┃╭╮┃╭╋┫━━┫╭╮┃╭╮╮╱┃┃┃╭╮┃╭╮┃┃
+┃╰━┫╰╯┃┃┃┃╰╯┃╭╮┃┃┃┣━━┃╰╯┃┃┃┃╱┃╰┫╰╯┃╰╯┃╰╮
+╰━━┻━━┻┻┻┫╭━┻╯╰┻╯╰┻━━┻━━┻╯╰╯╱╰━┻━━┻━━┻━╯
+╱╱╱╱╱╱╱╱╱┃┃
+╱╱╱╱╱╱╱╱╱╰╯
+
+
+Welcome to the JSON comparison tool!
+
+This script compares your local 'specs.json' file with a reference JSON file.
+The differences are displayed with the following indicators:
 
 - Red (-) lines: These are parts present in the reference file but missing in your local file.
 - Green (+) lines: These are parts present in your local file but missing in the reference file.
 
-Please note that JSON objects are unordered, so the order of keys does not affect the comparison. The script normalizes the JSON by sorting the keys to ensure that only actual content differences are highlighted. However, if your JSON contains arrays, which are ordered, differences in array order will be shown.
+Please note that JSON objects are unordered, so the order of keys does not affect the comparison.
+The script normalizes the JSON by sorting the keys to ensure that only actual content differences are highlighted.
+However, if your JSON contains arrays, which are ordered, differences in array order will be shown.
+
+Keys that are green are not present in the reference file, which means they are not part of the spec.
 `);
 
     // Wait for the user to press Enter before proceeding
@@ -106,6 +134,14 @@ Please note that JSON objects are unordered, so the order of keys does not affec
                 }
             });
         }
+
+        console.log(`
+
+***************************
+- Red (-) lines: These are parts present in the reference file but missing in your local file.
+- Green (+) lines: These are parts present in your local file but missing in the reference file.
+***************************
+`);
     } catch (error) {
         console.error('Error:', error.message);
         process.exit(1);
