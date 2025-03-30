@@ -44,7 +44,7 @@ function waitForEnter() {
             input: process.stdin,
             output: process.stdout
         });
-        rl.question('Press Enter to continue...', () => {
+        rl.question('Press Enter to continue...\n\n', () => {
             rl.close();
             resolve();
         });
