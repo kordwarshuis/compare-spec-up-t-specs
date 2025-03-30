@@ -3,6 +3,7 @@
 const https = require('https');
 const fs = require('fs');
 const diff = require('diff');
+const readline = require('readline'); // Add this line to import readline
 
 // URL of the reference JSON file
 const referenceUrl = 'https://raw.githubusercontent.com/blockchainbird/spec-up-t/master/src/install-from-boilerplate/boilerplate/specs.json';
@@ -36,9 +37,22 @@ function sortObject(obj) {
         }, {});
 }
 
+// Function to wait for the user to press Enter
+function waitForEnter() {
+    return new Promise((resolve) => {
+        const rl = readline.createInterface({
+            input: process.stdin,
+            output: process.stdout
+        });
+        rl.question('Press Enter to continue...', () => {
+            rl.close();
+            resolve();
+        });
+    });
+}
+
 // Main comparison function
 async function main() {
-
     console.log(`
 Welcome to the JSON comparison tool. This script compares your local 'specs.json' file with a reference JSON file. The differences are displayed with the following indicators:
 
@@ -47,6 +61,9 @@ Welcome to the JSON comparison tool. This script compares your local 'specs.json
 
 Please note that JSON objects are unordered, so the order of keys does not affect the comparison. The script normalizes the JSON by sorting the keys to ensure that only actual content differences are highlighted. However, if your JSON contains arrays, which are ordered, differences in array order will be shown.
 `);
+
+    // Wait for the user to press Enter before proceeding
+    await waitForEnter();
 
     try {
         // Fetch and parse the reference JSON
