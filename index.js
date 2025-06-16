@@ -77,7 +77,8 @@ async function main() {
 
 Welcome to the JSON comparison tool!
 
-This script compares your local 'specs.json' file with a reference JSON file.
+This script compares your local 'specs.json' file with the reference JSON file: https://github.com/blockchainbird/spec-up-t/blob/master/src/install-from-boilerplate/boilerplate/specs.json
+
 The differences are displayed with the following indicators:
 
 - Red (-) lines: These are parts present in the reference file but missing in your local file.
