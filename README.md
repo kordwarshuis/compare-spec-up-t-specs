@@ -4,7 +4,7 @@ A command-line tool that compares your local `specs.json` file with a reference 
 
 ## Overview
 
-This tool helps you identify differences between your local `specs.json` configuration and the reference configuration from the upstream repository. It's particularly useful for:
+This tool helps you identify differences between your local `specs.json` configuration and the [reference configuration](https://github.com/blockchainbird/spec-up-t/blob/master/src/install-from-boilerplate/boilerplate/specs.json). It's particularly useful for:
 
 - Ensuring your specs configuration adheres to the reference standard
 - Identifying custom configurations you've added
