@@ -1,6 +1,6 @@
 {
     "name": "compare-spec-up-t-specs",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "Compares local specs.json with a reference specs.json from GitHub",
     "bin": {
         "compare-spec-up-t-specs": "./index.js"
